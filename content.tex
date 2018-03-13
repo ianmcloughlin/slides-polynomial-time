@@ -1,11 +1,63 @@
 \begin{frame}{Polynomial time}
+  
   \redmath{P = \bigcup_k \text{TIME}(n^k)}
   
   \begin{description}
     \item[Decidable] languages are languages for which there is at least one Turing machine that halts in a finite number of state table lookups for each input.
     \item[P] is the set of languages that are decidable in polynomial time using a deterministic Turing machine.
-    \item[Polynomial] means that for a length of input $n$ the number of steps (state table lookups) is $O(n^k)$ for some $k \in \mathbb{N}$.
-    \item[$\text{TIME}(n^k)$] is the set of languages decidable in $O(n^k)$ steps.
+    \item[Polynomial] means that for a length of input \( n \) the number of steps (state table lookups) is \( O(n^k) \) for some \( k \in \mathbb{N} \).
+    \item[\( \text{TIME}(n^k) \)] is the set of languages decidable in \( O(n^k) \) steps.
   \end{description}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Recap on polynomials}
+  
+  \redmath{a_0 + a_1 x + a_2 x^2 + \cdots + a_m x^m \text{ where } a_i \in \mathbb{R}, m \in \mathbb{N}}
+  
+  \begin{description}
+    \item[Polynomials] have a fixed number of operations (add, multiply) to perform for all values of \( x \).
+    \item[Exponential] constrasts with polynomial, having a variable number of operations, e.g. \( 2^x \).
+    \item[Functions] that are polynomial in $n$ are functions that take $n$ and plug it into a polynomial to give the result.
+  \end{description}
+
+  \begin{adjustbox}{max width={0.4\textwidth}, center}
+    \begin{tikzpicture}
+      \begin{axis}[xmin=0, domain=0:3, axis x line=bottom, axis y line=left, legend style={at={(0.4,0.4)},anchor=south}]
+        \addplot[black] {pow(x,4) + 5*pow(x, 2) + 1};
+        \legend{$x^4 + 5 x^2 + 1$};
+      \end{axis}
+    \end{tikzpicture}
+  \end{adjustbox}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Polynomials are closed}
+  
+  \redmath{\mathbb{R}[x] = \{ a_0 + a_1 x + a_2 x^2 + \cdots + a_m x^m \mid a_i \in \mathbb{R}, m \in \mathbb{N} \}}
+  
+  The set of all polynomials is closed under the following operations:
+  \begin{description}
+    \item[Addition:] \( (x^4 + 1) + (5 x^3 + x) = x^4 + 5 x^3 + x + 1 \)
+    \item[Multiplication:] \( (x^4 + 1) \times (5 x^3 + x) = 5 x^7 + x^5 + 5 x^3 + x \)
+    \item[Composition:] \( ((5 x^3 + x))^4 + 1  = 625x^{12} + 500 x^{10} + 150x^8 + 20x^6 + x^4 \)
+  \end{description}
+
+  \red{Applying two polynomial time algorithms, one after the other, is still polynomial time.}
+
+\end{frame}
+
+
+\begin{frame}{Tractability}
+  
+  \begin{description}
+    \item[Cobham's] thesis is that P represents the tractable problems.
+    \item[Strictly] exponential time problems are considered intractable.
+    \item[Careful:] would you consider an problem whose best known algorithm is $O(n^{100000})$ tractable?
+  \end{description}
+
+  \red{The exponential time hypothesis is that 3-SAT can't be solved in subexponential time. 3-SAT is NP-complete.}
 
 \end{frame}
